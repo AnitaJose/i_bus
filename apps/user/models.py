@@ -52,6 +52,7 @@ class User(AbstractUser):
         default=None, null=True,
         related_name='college_branch'
     )
+    phone_number = models.CharField(max_length=10, blank=True, null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
