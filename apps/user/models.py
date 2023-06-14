@@ -42,6 +42,13 @@ class UserManager(BaseUserManager):
 class User(AbstractUser):
     """User model."""
 
+    Student = 0
+    Staff = 1
+    TYPE_CHOICES = (
+        (Student, 'Student'),
+        (Staff, 'Staff'),
+    )
+
     username = None
     first_name = models.CharField(max_length=255, blank=True, null=True)
     last_name = models.CharField(max_length=255, blank=True, null=True)
@@ -53,6 +60,12 @@ class User(AbstractUser):
         related_name='college_branch'
     )
     phone_number = models.CharField(max_length=10, blank=True, null=True)
+    user_type = models.IntegerField(
+        choices=TYPE_CHOICES,
+        blank=True,
+        null=True,
+        default=0
+    )
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
