@@ -12,6 +12,8 @@ class UserSignUpForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(UserSignUpForm, self).__init__(*args, **kwargs)
 
+        self.fields['user_type'].label = "I am a"
+
     first_name = forms.CharField(
         widget=forms.TextInput(
             attrs={'placeholder': "First Name"}
@@ -46,8 +48,8 @@ class UserSignUpForm(forms.ModelForm):
 
         model = User
         fields = (
-            'first_name', 'last_name', 'email', 'phone_number',
-            'branch', 'password',
+            'user_type', 'branch', 'first_name', 'last_name', 'phone_number',
+            'email', 'password',
         )
 
     def clean_email(self):

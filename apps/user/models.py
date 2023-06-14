@@ -62,8 +62,6 @@ class User(AbstractUser):
     phone_number = models.CharField(max_length=10, blank=True, null=True)
     user_type = models.IntegerField(
         choices=TYPE_CHOICES,
-        blank=True,
-        null=True,
         default=0
     )
 
