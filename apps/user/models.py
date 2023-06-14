@@ -1,6 +1,7 @@
 """Script for overiding the user model."""
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
+from apps.college.models import CollegeBranch
 
 
 class UserManager(BaseUserManager):
@@ -45,6 +46,12 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=255, blank=True, null=True)
     last_name = models.CharField(max_length=255, blank=True, null=True)
     email = models.EmailField(unique=True)
+    college_branch = models.ForeignKey(
+        CollegeBranch,
+        on_delete=models.PROTECT,
+        default=None, null=True,
+        related_name='college_branch'
+    )
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
