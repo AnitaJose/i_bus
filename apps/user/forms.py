@@ -1,6 +1,7 @@
 from django import forms
-from .models import User
 from django.core.exceptions import ValidationError
+from .models import User
+from apps.college.models import CollegeBranch
 
 
 class UserSignUpForm(forms.ModelForm):
@@ -24,6 +25,11 @@ class UserSignUpForm(forms.ModelForm):
     email = forms.EmailField(
         label='Email',
         widget=forms.TextInput(attrs={'placeholder': 'Email'})
+    )
+    branch = forms.ModelChoiceField(
+        queryset=CollegeBranch.objects.all().order_by('branch_name'),
+        empty_label="Select Branch",
+        widget=forms.Select(attrs={'required': 'true' }),
     )
     password = forms.CharField(
         label='Password',
