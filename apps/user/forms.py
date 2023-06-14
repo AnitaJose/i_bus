@@ -26,6 +26,11 @@ class UserSignUpForm(forms.ModelForm):
         label='Email',
         widget=forms.TextInput(attrs={'placeholder': 'Email'})
     )
+    phone_number = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'placeholder': "Phone Number"}
+        )
+    )
     branch = forms.ModelChoiceField(
         queryset=CollegeBranch.objects.all().order_by('branch_name'),
         empty_label="Select Branch",
@@ -41,7 +46,8 @@ class UserSignUpForm(forms.ModelForm):
 
         model = User
         fields = (
-            'first_name', 'last_name', 'email', 'password',
+            'first_name', 'last_name', 'email', 'phone_number',
+            'branch', 'password',
         )
 
     def clean_email(self):
