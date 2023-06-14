@@ -65,7 +65,8 @@ class UserSignUpForm(forms.ModelForm):
             first_name=self.cleaned_data['first_name'],
             last_name=self.cleaned_data['last_name']   
         )
-        user.is_active = True   
+        user.is_active = True
+        user.college_branch = self.cleaned_data['branch']
         user.save()
 
         return user
