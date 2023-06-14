@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as dj_login, logout as dj_logout
 from apps.user.forms import UserSignUpForm, UserLoginForm
-from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -11,7 +10,7 @@ def landing_page(request):
     """View to display landing page"""
 
     return render(
-        request, 'index.html', {}
+        request, 'index.html',
     )
 
 
@@ -67,10 +66,3 @@ def login(request):
         request, 'login.html', {'form': form}
     )
 
-
-@login_required
-def home(request):
-    """View for home page."""
-    return render(
-        request, 'home.html', {'user': request.user}
-    )

@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', landing_page, name='index'),
     path('user/', include('apps.user.urls')),
+    path('buspass/', include('apps.buspass.urls'))
 ]

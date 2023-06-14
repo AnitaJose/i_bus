@@ -50,8 +50,8 @@ class User(AbstractUser):
     )
 
     username = None
-    first_name = models.CharField(max_length=255, blank=True, null=True)
-    last_name = models.CharField(max_length=255, blank=True, null=True)
+    first_name = models.CharField(max_length=255, null=True, blank=True)
+    last_name = models.CharField(max_length=255, null=True, blank=True)
     email = models.EmailField(unique=True)
     college_branch = models.ForeignKey(
         CollegeBranch,
@@ -59,7 +59,7 @@ class User(AbstractUser):
         default=None, null=True,
         related_name='college_branch'
     )
-    phone_number = models.CharField(max_length=10, blank=True, null=True)
+    phone_number = models.CharField(max_length=10, null=True, blank=True)
     user_type = models.IntegerField(
         choices=TYPE_CHOICES,
         default=0

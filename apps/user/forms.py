@@ -15,11 +15,13 @@ class UserSignUpForm(forms.ModelForm):
         self.fields['user_type'].label = "I am a"
 
     first_name = forms.CharField(
+        label='First Name',
         widget=forms.TextInput(
             attrs={'placeholder': "First Name"}
         )
     )
     last_name = forms.CharField(
+        label='Last Name',
         widget=forms.TextInput(
             attrs={'placeholder': "Last Name"}
         )
@@ -29,6 +31,7 @@ class UserSignUpForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'placeholder': 'Email'})
     )
     phone_number = forms.CharField(
+        label='Phone Number',
         widget=forms.TextInput(
             attrs={'placeholder': "Phone Number"}
         )
@@ -55,9 +58,12 @@ class UserSignUpForm(forms.ModelForm):
     def clean_email(self):
         """Def which enforces uniqueness of email addresses."""
         email = self.cleaned_data['email'].lower()
+
         r = User.objects.filter(email=email)
+
         if r.count():
             raise ValidationError("Email ID exists")
+        
         return email
 
     def save(self, commit=True):
@@ -75,6 +81,8 @@ class UserSignUpForm(forms.ModelForm):
         )
         user.is_active = True
         user.college_branch = self.cleaned_data['branch']
+        user.phone_number = self.cleaned_data['phone_number']
+        user.user_type = self.cleaned_data['user_type']
         user.save()
 
         return user
