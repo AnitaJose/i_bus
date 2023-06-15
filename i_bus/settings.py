@@ -136,3 +136,6 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL = '/'
+
+# Bus pass rate is INR 2 / KM / Day
+BASE_BUS_PASS_RATE = 2

@@ -10,18 +10,6 @@
 {% block body %}
 
 <div class="container">
-
-    <!-- <table class="table-bordered">
-        <tr>
-          <td>
-            <img class="img-fluid" src="{% static 'images/user.png' %}" alt="User" style="width: 320px; height: 320px;">
-          </td>
-          <td>Column 2</td>
-          <td>Column 3</td>
-        </tr>
-      </table> -->
-
-
     <div class="card mt-4">
         <div class="card-body">
             <div class="row">
@@ -34,7 +22,7 @@
                     <br>
                     <h2 class="mt-4">Hello {{ user.first_name }} {{ user.last_name }}!</h2>
                     
-                    <div class="mt-4">
+                    <div class="mt-4 mb-4">
                         <span>{{ user.college_branch }}</span>
                         <br>
                         <span>{{ user.email }}</span>
@@ -45,11 +33,19 @@
                 <div class="col-md-3">
                     <div class="card">
                         <!-- if no active pass -->
+                        {% if user_bus_pass %}
+                        <div class="text-center mt-4 mb-4">
+                            <img src="{% static 'images/blurred_qr_code.png' %}" alt="">
+                            <br>
+                            <a class="btn btn-primary mt-4" href="{% url 'view_pass' pk=user_bus_pass.pk %}">View Pass</a>
+                        </div>
+                        {% else %}
                         <div class="text-center mt-4 mb-4">
                             <img src="{% static 'images/blurred_qr_code.png' %}" alt="">
                             <p>You have no active pass</p>
-                            <a class="btn btn-primary">Book Pass</a>
+                            <a class="btn btn-primary" href="{% url 'select_bus' %}">Book Pass</a>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
