@@ -48,3 +48,17 @@ class UserBusPass(models.Model):
         """Overiding the table name."""
 
         db_table = 'user_bus_pass'
+
+
+class Notification(models.Model):
+    notification = models.CharField(max_length=1000)
+    seen_by = models.ManyToManyField(User, blank=True)
+
+    def __str__(self):
+        """Return the name as string value ."""
+        return self.notification
+
+    class Meta:
+        """Overiding the table name."""
+
+        db_table = 'notification'

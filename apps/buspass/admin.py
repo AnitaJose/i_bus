@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BusStop, Bus, UserBusPass
+from .models import BusStop, Bus, UserBusPass, Notification
 
 # Register your models here.
 
@@ -22,4 +22,13 @@ class BusAdmin(admin.ModelAdmin):
 
 admin.site.register(Bus, BusAdmin)
 
-admin.site.register(UserBusPass)
+class UserBusPassAdmin(admin.ModelAdmin):
+    """Admin interface to manage coupon types."""
+
+    list_display = ('id', 'user', 'bus', 'boarding_point', 'created_at', 'expire_at', 'fare', 'active')
+    list_filter = ('user',)
+    search_fields = ('user',)
+
+admin.site.register(UserBusPass, UserBusPassAdmin)
+
+admin.site.register(Notification)

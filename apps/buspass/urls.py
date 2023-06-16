@@ -9,4 +9,5 @@ urlpatterns = [
     path('payment/<int:pk>/', views.payment, name='payment'),
     path('payment-successful/<int:pk>/', views.payment_successful, name='payment_successful'),
     path('view-pass/<int:pk>/', views.view_pass, name='view_pass'),
+    path('cancel-pass/<int:pk>/', views.cancel_pass, name='cancel_pass'),
 ]

@@ -14,7 +14,7 @@
         <h2>Select Bus</h2>
     </div>
 
-    {% for bus in buses %}
+    {% for bus in all_bus_info %}
     <div class="row mb-3">
         <div class="col-md-6 offset-md-3">
             <a href="{% url 'book' pk=bus.pk %}" style="text-decoration: None;" class="mt-3">
