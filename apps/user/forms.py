@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from .models import User
-from apps.college.models import CollegeBranch
+from apps.college.models import CollegeBranch, CollegeStudent, CollegeStaff
 
 
 class UserSignUpForm(forms.ModelForm):
@@ -59,9 +59,8 @@ class UserSignUpForm(forms.ModelForm):
         """Def which enforces uniqueness of email addresses."""
         email = self.cleaned_data['email'].lower()
 
-        r = User.objects.filter(email=email)
-
-        if r.count():
+        user = User.objects.filter(email=email)
+        if user.count():
             raise ValidationError("Email ID exists")
         
         return email
