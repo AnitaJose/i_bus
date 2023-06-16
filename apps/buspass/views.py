@@ -71,7 +71,7 @@ def select_bus(request):
     for bus in buses:
         bus_info = {
                         'pk': bus.pk,
-                        'bus_no': bus.bus_number,
+                        'bus_number': bus.bus_number,
                         'destination': bus.destination,
                         'bus_stops': bus.bus_stops.all().
                                         order_by('distance_from_college').
