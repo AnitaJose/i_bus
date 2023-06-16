@@ -18,20 +18,19 @@
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="card">
-                    <div class="card-body text-center">
-                        <img src="/static/images/logo.jpg" class="img-fluid" style="width:200px; height:150px;" alt="logo">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img src="/static/images/logo.jpg" class="img-fluid" style="width:200px; height:150px;" alt="logo">
+                            <h3>i-Bus</h3>
+                            <p>Bus Pass Management System</p>
+                        </div>
+    
+                        <hr>
+    
+                        {% block body %}
+                        
+                        {% endblock body %}
                     </div>
-
-                    <div class="text-center">
-                        <h3>i-Bus</h3>
-                        <p>Bus Pass Management System</p>
-                    </div>
-
-                    <hr>
-
-                    {% block body %}
-                    
-                    {% endblock body %}
                 </div> 
             </div>
         </div>
