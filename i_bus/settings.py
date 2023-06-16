@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.user',
+    'apps.buspass',
     'crispy_forms',
     'crispy_bootstrap5',
     'apps.college',
@@ -135,3 +136,6 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL = '/'
+
+# Bus pass rate is INR 2 / KM / Day
+BASE_BUS_PASS_RATE = 2

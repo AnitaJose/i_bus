@@ -13,7 +13,6 @@ class UserAdmin(DjangoUserAdmin):
 
     def get_form(self, request, obj=None, **kwargs):
         """Custom form with excude field ."""
-        self.exclude = ('created_by')
         form = super(UserAdmin, self).get_form(request, obj, **kwargs)
         return form
 
@@ -21,8 +20,7 @@ class UserAdmin(DjangoUserAdmin):
         """Save methode with user from the currently loggined user ."""
         user = request.user.id
         instance = form.save(commit=False)
-        if not change or not instance.created_by:
-            instance.created_by = user
+        if not change:
             instance.is_staff = True
 
         instance.save()
